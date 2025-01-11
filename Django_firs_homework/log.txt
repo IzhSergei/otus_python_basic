@@ -1,0 +1,45 @@
+(.venv) sergei@sergei-F150a:~/PycharmProjects/Django_firs_homework$ python manage.py makemigrations
+Migrations for 'shop_app':
+  shop_app/migrations/0001_initial.py
+    + Create model Category
+    + Create model Product
+(.venv) sergei@sergei-F150a:~/PycharmProjects/Django_firs_homework$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, shop_app
+Running migrations:
+  Applying shop_app.0001_initial... OK
+(.venv) sergei@sergei-F150a:~/PycharmProjects/Django_firs_homework$ python manage.py shell
+Python 3.12.3 (main, Nov  6 2024, 18:32:19) [GCC 13.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> Category.objects.create(name="TV", description="Телевизор")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Category' is not defined
+>>> from shop_app.models import Product, Category
+>>> Category.objects.create(name="TV", description="Телевизор")
+<Category: TV>
+>>> Category.objects.create(name="Smartphone", description="Смартфон")
+<Category: Smartphone>
+>>> Product.objects.create(name="Samsung TV50", description="телевизор самсунг диагонль экрана 50", price="30000.25", category_id=1)
+<Product: Samsung TV50>
+>>> Product.objects.create(name="LG TV32", description="телевизор лджи диагонль экрана 32", price="20000.75", category_id=1)
+<Product: LG TV32>
+>>> Product.objects.create(name="Sony TV49", description="телевизор сони диагонль экрана 49", price="45000.00", category_id=1)
+<Product: Sony TV49>
+>>> Product.objects.create(name="Apple 15", description="смартфон Эппл 15", price="120000.00", category_id=2)
+<Product: Apple 15>
+>>> Product.objects.create(name="Samsung A05", description="смартфон Самсунг А05", price="32000.00", category_id=2)
+<Product: Samsung A05>
+>>> Product.objects.create(name="Xiaomi 14", description="смартфон ксяоми 14", price="25000.00", category_id=2)
+<Product: Xiaomi 14>
+>>> Product.objects.all()
+<QuerySet [<Product: Samsung TV50>, <Product: LG TV32>, <Product: Sony TV49>, <Product: Apple 15>, <Product: Samsung A05>, <Product: Xiaomi 14>]>
+>>> category=Category.objects.get(name="TV")
+>>> category.product.all()
+<QuerySet [<Product: Samsung TV50>, <Product: LG TV32>, <Product: Sony TV49>]>
+>>> category=Category.objects.get(name="Smartphone")
+>>> category.product.all()
+<QuerySet [<Product: Apple 15>, <Product: Samsung A05>, <Product: Xiaomi 14>]>
+>>> 
+
