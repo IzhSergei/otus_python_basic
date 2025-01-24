@@ -1,0 +1,13 @@
+{% extends 'shop_app/base.html' %}
+
+{% block title %} {{ title }}  {% endblock %}
+
+{% block content %}
+        <a href="{% url 'category_include' category %}"> <h1>{{ title }}</h1> </a>
+        <h1>{{ products.name }}</h1>
+        <p>{{ products.description }}</p>
+        <p>Цена: {{products.price}} руб.</p>
+        <p>Дата создания: {{products.created_at}}</p>
+        <a href="{% url 'edit_product'  products.id  %}" class="btn btn-secondary">Редактировать</a>
+
+{% endblock %}

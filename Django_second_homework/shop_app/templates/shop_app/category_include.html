@@ -1,0 +1,16 @@
+{% extends 'shop_app/base.html' %}
+
+{% block title %} {{ title }}  {% endblock %}
+
+{% block content %}
+        <h1>{{ title }}</h1>
+        <ul class="list-group">
+            {% for product in products %}
+                <li class="list-group-item">
+                     <a href="{% url 'products_detail' product.id %}"> <h5>{{ product.name }}</h5> </a>
+                </li>
+            {% empty %}
+                <li class="list-group-item">Нет товаров в этой категории</li>
+            {% endfor %}
+        </ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'shop_app/base.html' %}
+
+{% block title %} Товары {% endblock %}
+
+{% block content %}
+         <h1>{{ title }}</h1>
+        <ul class="list-group">
+            {% for product in products %}
+                <li class="list-group-item">
+                    <a href="{% url 'products_detail' product.id %}"> <h5>{{ product.name }}</h5> </a>
+                    <p>{{ product.description }}</p>
+                    <p>Цена: {{ product.price }} руб.</p>
+                </li>
+            {% empty %}
+                <li class="list-group-item">Нет товаров</li>
+            {% endfor %}
+        </ul>
+
+       <a href="{% url 'add_product' %}" class="btn btn-primary">добавить товар</a>
+{% endblock %}
