@@ -1,0 +1,16 @@
+{% extends 'shop_app/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+        <h1>{{ category.name }}</h1>
+        <p>{{ category.description }}</p>
+         <form method="post" class="mt-4">
+            {% csrf_token %}
+            <h1 class="text-danger">подтвердите удаление категории</h1>
+            <button type="submit" class="btn btn-danger">Удалить</button>
+            <a href="{% url 'category_list' %}" class="btn btn-secondary">Отмена</a>
+        </form>
+
+
+{% endblock %}

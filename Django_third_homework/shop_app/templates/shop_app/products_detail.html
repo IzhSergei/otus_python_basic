@@ -1,0 +1,14 @@
+{% extends 'shop_app/base.html' %}
+
+{% block title %} {{ products.category.description }}  {% endblock %}
+
+{% block content %}
+        <a href="{% url 'category_include' products.category.id %}"> <h1>{{ products.category.description }}</h1> </a>
+        <h1>{{ products.name }}</h1>
+        <p>{{ products.description }}</p>
+        <p>Цена: {{products.price}} руб.</p>
+        <p>Дата создания: {{products.created_at}}</p>
+        <a href="{% url 'edit_product'  products.id  %}" class="btn btn-secondary">Редактировать</a>
+        <a href="{% url 'product_delete'  products.id  %}" class="btn btn-danger">Удалить</a>
+
+{% endblock %}

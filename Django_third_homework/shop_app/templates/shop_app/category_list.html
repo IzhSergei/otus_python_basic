@@ -1,0 +1,18 @@
+{% extends 'shop_app/base.html' %}
+
+{% block title %} {{ title }}  {% endblock %}
+
+{% block content %}
+        <h1>{{ title }}</h1>
+        <ul class="list-group">
+            {% for category in categories %}
+                <li class="list-group-item">
+                    <a href="{% url 'category_include' category.id %}"> <h5>{{ category.name }}</h5> </a>
+                </li>
+            {% empty %}
+                <li class="list-group-item">Нет категорий</li>
+            {% endfor %}
+        </ul>
+
+       <a href="{% url 'add_category' %}" class="btn btn-primary">добавить категорию</a>
+{% endblock %}
