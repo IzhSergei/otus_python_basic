@@ -3,7 +3,7 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from app import router as api_router
 
-app = FastAPI()
+app=FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
