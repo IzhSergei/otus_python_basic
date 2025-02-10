@@ -1,5 +1,4 @@
 import pytest
-from homework_05.app import app
 
 module_app = pytest.importorskip("homework_05.app")
 
